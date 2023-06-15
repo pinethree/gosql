@@ -10,4 +10,7 @@ createdb:
 dropdb:
 	docker exec -it postgresalpine dropdb -U root gosql
 
+migrationup:
+	migrate -path migrations -database "postgresql://root:postgres@localhost:5432/gosql?sslmode=disable" -verbose up
+
 .PHONY: postgresinit postgres createdb dropdb

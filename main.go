@@ -29,20 +29,6 @@ func main() {
 
 	defer db.Close()
 
-	_, err = db.Exec(`
-		CREATE TABLE IF NOT EXISTS employees (
-			employee_id SERIAL PRIMARY KEY,
-			first_name VARCHAR(1000) NOT NULL,
-			last_name VARCHAR(1000) NOT NULL,
-			date_of_birth DATE NOT NULL,
-			phone_number VARCHAR(1000) NOT NULL
-		)
-	`)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	for i := 0; i < 1000; i++ {
 		employee := Employee{}
 		err := faker.FakeData(&employee)
